@@ -8,10 +8,10 @@ This is a mushroom classification project, where model predicts whether mushroom
 ## Dataset
 
 ### Overview
-The dataset consisted of different mushroom characteristics, which are classified into edible or poisonous. The dataset was downloaded from UCI ML repository and consists of around 60K rows. Classes are balanced. 
+The dataset consisted of different mushroom characteristics, which are classified into edible or poisonous. The dataset was downloaded from UCI ML repository and consists of around 60K rows. Classes are balanced. The dataset consists of 19 features, where 3 of them numerical and the rest is categorical. However, some features were with more Nulls then actual values, hence, I dropped them. There were other features with Null, but all of them were categorical features, so I filled them with category 'Other'. 
 
 ### Task
-This is a binary classification task, where classes in dataset are balanced. The dataset consists of 19 features, where 3 of them numerical and the rest is categorical. However, some features were with more Nulls then actual values, hence, I dropped them. There were other features with Null, but all of them were categorical features, so I filled them with category 'Other'. 
+This is a binary classification task, where classes in dataset are balanced.
 
 ### Access
 Initially, I downloaded the dataset from UCI ML website. Then I uploaded it into Azure Workspace by registering it via uploading file. In the notebooks, I accessed the dataset by providing its name to Dataset.get_by_name() function. 
@@ -23,7 +23,7 @@ As AutoMLConfig, I set iteration_timeout_minutes for 10 minutes in order to excl
 
 ### Results
 
-AutoML was able to achieve almost perfect accuracy result (around 0.998 score). The best model was StackEnsemble, which is a meta-learning algorithm that optimizes combination of predictions of base ML algorithms. It consisted of 5 different decision tree based models (4 Gradient Boosters and 1 Random Forest). Each base algorithm consisted of own hyperparameters, which I will not go in detail. Because it achieved almost perfect accuracy, I am not sure that any idea will bring significant improvement, though, one may try to manually featurize the dataset in order to catch last edge cases in classification. 
+AutoML was able to achieve almost perfect accuracy result (around 0.998 score). The best model was StackEnsemble, which is a meta-learning algorithm that optimizes combination of predictions of base ML algorithms. It consisted of 5 different decision tree based models (4 Gradient Boosters and 1 Random Forest). Each base algorithm consisted of own hyperparameters, which I will not go in detail. 
 
 !['Proof'](https://github.com/bekiichone/nd00333-capstone/blob/master/starter_file/screenshots/AutoML%20run%20details.PNG)
 AutoML Run Details
@@ -38,7 +38,7 @@ Since AutoML best model consisted of ensemble of tree based models, I wanted to 
 
 ### Results
 
-The best model achieved accuracy at around 0.82, which was much lower compared to AutoML best model. Does it prove that linear model is not enough for the task? Not really. Because I have only tried to tune only two set of parameters, where the best model had C = 10 and max_iter = 200. One may also try increase hyperparameter space by providing more parameters or parameter values. Another important step is featurization. In my case, I did not worked on feature generation and filled None values with one value. One may also do thorough exploratory data analysis and create more features. Lastly, I did OneHot encoding on categorical features. However, probobly other encoding techniques will produce better result as well as dimensionality reduction algorithms. Due to OneHot encoding the feature space increased drastically, which prone to dimensionality curse. Hence, PCA or any other dimensionality reduction algorithm may be a good idea to use. 
+The best model achieved accuracy at around 0.82, which was much lower compared to AutoML best model. Does it prove that linear model is not enough for the task? Not really. Because I have only tried to tune only two set of parameters, where the best model had C = 10 and max_iter = 200. 
 
 !['Proof'](https://github.com/bekiichone/nd00333-capstone/blob/master/starter_file/screenshots/hyperdrive%20run%20details.PNG)
 HyperDrive Run Details
@@ -86,6 +86,17 @@ data = {
 }
 
 The dictionary then should be dumped to json and send via http request to endpoint. The request should give back result something like: b'{"Results": ["p"]}'.
+
+## Furute Improvement Suggestions
+
+### Azure ML model
+
+Because it achieved almost perfect accuracy, I am not sure that any idea will bring significant improvement, though, one may try to manually featurize the dataset in order to catch last edge cases in classification. 
+
+### Hyperparameter Tuning Model
+
+One may also try increase hyperparameter space by providing more parameters or parameter values. Another important step is featurization. In my case, I did not worked on feature generation and filled None values with one value. One may also do thorough exploratory data analysis and create more features. Lastly, I did OneHot encoding on categorical features. However, probobly other encoding techniques will produce better result as well as dimensionality reduction algorithms. Due to OneHot encoding the feature space increased drastically, which prone to dimensionality curse. Hence, PCA or any other dimensionality reduction algorithm may be a good idea to use. 
+
 
 ## Screen Recording
 https://youtu.be/ajo98WoerRo
