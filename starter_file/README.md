@@ -88,10 +88,7 @@ data = {
 The dictionary then should be dumped to json and send via http request to endpoint. The request should give back result something like: b'{"Results": ["p"]}'.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
+https://youtu.be/ajo98WoerRo
 
 ## Standout Suggestions
 *TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
