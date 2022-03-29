@@ -1,6 +1,4 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
-
-# Your Project Title Here
+# Mushroom Classification modeling and deployment
 
 This is a mushroom classification project, where model predicts whether mushroom is edible or not based on different characteristics of the mushroom. The dataset was downloaded from UCI ML repository (it was uploaded in 2021) and is not in the Azure ecosystem. The project consisted of two different uproaches to the task: AutoML and HyperDrive. In AutoML a bunch of different models were trained, whereas in HyperDrive only logistic regression hyperparameters were tuned. The best model was then deployed in ACI. 
 
