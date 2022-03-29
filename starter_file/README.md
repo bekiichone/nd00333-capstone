@@ -51,7 +51,9 @@ The task was to deploy best model, therefore, I deployed AutoML best model. Belo
 
 !['Proof'](https://github.com/bekiichone/nd00333-capstone/blob/master/starter_file/screenshots/AutoML%20deploy%20endpoint.PNG)
 
-In order to send a request to the endpoint, one have to carefully provide json dump. The example is below (and it is not recommended to swap tje features positions): 
+Prior to deployment, I have registered the model in the workspace. Next, one have to provide entry script to InferengeConfig. You can write custom one, however, the easiest way is to download the scoring script from the best run. Then it is necessary to create an Environment class from yaml file (which can be downloaded form workspace). This is necessary because deployment may cause error and it is refered to explicitely providing environment to InferenceConfig. Next step is to set up Webservice configuration (in our case it is ACI). Finally, we can deploy the model by providing workspace, model, inference and webservice configurations. After a couple of minutes the model should be deployed successfully. 
+
+In order to send a request to the endpoint we can take prepared script from Deploy page -> Consume script. There we have data provided as dictionary, which should be dumped as json file. Below is an example of such dictionary. 
 
 data = {
     "Inputs": {
@@ -85,7 +87,7 @@ data = {
     }
 }
 
-The dictionary then should be dumped to json and send via http request to endpoint. The request should give back result something like: b'{"Results": ["p"]}'.
+Then we have to construct a request by providing endpoint url, header and body, where body is the json dump of test features provided for prediction. Then we send request via urlopen and receive a responce via read() function. The request should give back result something like: b'{"Results": ["p"]}', which shows that our provided mushroom is classified as poisonous (p). 
 
 ## Furute Improvement Suggestions
 
